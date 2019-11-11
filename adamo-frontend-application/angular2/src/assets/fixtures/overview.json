@@ -1,0 +1,50 @@
+{
+    "m_Categorie": [
+        {
+            "m_ID": 1,
+            "m_Name" : "irgendeine komische basis von Formen oder Linien bei BPMN",
+            "m_MultipleChoiceFinished": false,
+            "m_IntroductionFinished": false,
+            "m_ModellerTask": [
+                {
+                    "m_TaskID": "fejiwoafew-fejwaio",
+                    "m_TaskName": "first task of cat 1",
+                    "m_TaskFinished" : false
+                },
+                {
+                    "m_TaskID": "nvjreafuewa-fjewaonf",
+                    "m_TaskName": "second task of cat 1",
+                    "m_TaskFinished" : false
+                },
+                {
+                    "m_TaskID": "wafmnvdafwe-nfiwanva",
+                    "m_TaskName": "third task of cat 1",
+                    "m_TaskFinished" : false
+                }
+            ]
+        },
+        {
+            "m_ID": 2,
+            "m_Name" : "erweiterung von komischen von Formen und Linien bei BPMN",
+            "m_MultipleChoiceFinished": false,
+            "m_IntroductionFinished": false,
+            "m_ModellerTask": [
+                {
+                    "m_TaskID": "fejiwoafew-fejwaio",
+                    "m_TaskName": "first task of cat 2",
+                    "m_TaskFinished" : false
+                },
+                {
+                    "m_TaskID": "nvjreafuewa-fjewaonf",
+                    "m_TaskName": "second task of cat 2",
+                    "m_TaskFinished" : false
+                },
+                {
+                    "m_TaskID": "wafmnvdafwe-nfiwanva",
+                    "m_TaskName": "third task of cat 2",
+                    "m_TaskFinished" : false
+                }
+            ]
+        }
+    ]
+}

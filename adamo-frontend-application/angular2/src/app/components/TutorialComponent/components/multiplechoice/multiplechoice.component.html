@@ -1,0 +1,27 @@
+<h1>Multiple Choice Test for 'Categorie' BPMN</h1>
+
+<div class="container">
+    <div class="text-center">
+
+        <!-- Question part -->
+        <h1>{{ multipleChoiceTest.m_MultipleChoice[questionid].m_Question }}</h1>
+
+        <!-- Answers part -->
+        <div class="border">
+            <div *ngFor="let answer of multipleChoiceTest.m_MultipleChoice[questionid].m_Answers">
+                <div>
+                    <input type="checkbox"> {{ answer }}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="questionid < multipleChoiceTest.m_MultipleChoice.length; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+            <button type="submit" class="btn btn-secondary" (click)="CheckCorrectness()">Submit</button>
+        </ng-template>
+        <ng-template #elseBlock>
+            <button class="btn btn-secondary" routerlink="">Zurück zur Startseite</button>
+        </ng-template>
+    </div>
+
+
+</div>

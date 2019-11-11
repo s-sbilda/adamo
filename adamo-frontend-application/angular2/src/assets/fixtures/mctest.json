@@ -1,0 +1,55 @@
+{
+    "m_MultipleChoice": [
+        {
+            "m_Question": "Which of these order flow elements in a BPMN process?",
+            "m_Answers": [
+                "1. Lane",
+                "2. Event",
+                "3. Sequence Flow",
+                "Gateway"
+            ]
+        },
+        {
+            "m_Question": "What connects a BPMN shape to a BPMN shape and a BPMN pool to a BPMN pool?",
+            "m_Answers": [
+                "1. An event and a message flow",
+                "2. A data object and a message flow",
+                "3. Message flow and a sequence flow",
+                "Sequence flow and a message flow"
+            ]
+        },
+        {
+            "m_Question": "There are many flow elements in BPMN. What are three types of BPMN flow elements?",
+            "m_Answers": [
+                "1. Private lanes, Abstract events and Collaboration messages",
+                "2. Events, Activities and Gateways",
+                "3. Process, Collaboration message, and Data Models"
+            ]
+        },
+        {
+            "m_Question": "A data object is most frequently used for which of the following?",
+            "m_Answers": [
+                "1. Data objects can be associated with activities, sequence flow and message flow.",
+                "2. The input and output of a process",
+                "3. A data object is regarded as a flow object and connects data elements among activities"
+            ]
+        },
+        {
+            "m_Question": "Which connector shows the order that activities will be performed in the process?",
+            "m_Answers": [
+                "1. Message Flow",
+                "2. Association",
+                "3. Sequence Flow"
+            ]
+        },
+        {
+            "m_Question": "Gateways are used to control the divergence and convergence of sequence flows.The term 'Gateway' implies that there is a gating mechanism that either allows or disallows the passage through the Gateway. Which Gateway is used to create alternative paths within the process, but only one is chosen?",
+            "m_Answers": [
+                "1. Inclusive gateway",
+                "2. Parallel gateway",
+                "3. Event based gateway",
+                "4. Exklusive gateway"
+            ]
+        }
+    ]
+}

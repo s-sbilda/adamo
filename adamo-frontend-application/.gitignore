@@ -1,0 +1,13 @@
+angular/
+node_modules/
+angular2/dist/
+angular2/src/**/*.map
+angular2/package-lock.json
+API/package-lock.json
+API/Doc
+.idea
+
+.vsc
+ode
+.env
+package-lock\.json
