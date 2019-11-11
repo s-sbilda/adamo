@@ -4,6 +4,8 @@ import * as uuid from 'uuid';
 
 import { UserEntity } from '../../modules/user/user.entity';
 // import { User } from '../../../src/modules/models/User';
+import { IntroEntity } from '../../modules/tutorial/intro/intro.entity';
+import { CategoryEntity } from 'modules/tutorial/category/category.entity';
 
 export class CreateBruce implements Seeder {
     public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -33,14 +35,12 @@ export class CreateBruce implements Seeder {
             .into(UserEntity)
             .values([
                 {
-                    email: 'daniel.hilpoltsteiner@haw-landshut.de',
-                    password: '12345678',
-                },{
-                    email: 'markus.schmidtner@haw-landshut.de',
-                    password: '12345678',
+                    email: 'demo@demo.dee3',
+                    password: '1234567891',
                 },
             ])
             .execute();
+        
     }
 
     //     const em = connection.createEntityManager();
