@@ -34,6 +34,26 @@ export class IntroController {
         return this.introService.getCategory('Advanced');
     }
 
+    @Get('professional')
+    listProfessional() : Promise<any[]> {
+        return this.introService.getCategory('Professional');
+    }
+
+    @Get(":id")
+    listNext(@Param('id') id) : Promise<any[]> {
+        return this.introService.getNextIntroById(id);
+    }
+
+    //@Get('randomByLeveL/:lvl')
+    //getRandomByLvl(@Param('lvl') lvl): Promise<any>{
+    //    return this.introService.getRandomByLvl(lvl);
+   // }
+
+    @Get('randomByLeveL/beginner')
+    getRandomBeginner(): Promise<any>{
+        return this.introService.getRandomByLvl('Beginner');
+    }
+
      /**
      * We use this also for password?
      * 
