@@ -7,6 +7,7 @@ import { Multiplechoice_QuestionEntity } from "../multiplechoice_question/multip
 import { UserEntity } from "modules/user/user.entity";
 import { IntroEntity } from "./../intro/intro.entity";
 import { Tg_IntroDto } from "./dto/tg_introDto";
+import { Exclude } from "class-transformer";
 @Entity({name:'tg_intro'})
 export class Tg_IntroEntity extends AbstractEntity<Tg_IntroDto>{
 
@@ -15,11 +16,14 @@ export class Tg_IntroEntity extends AbstractEntity<Tg_IntroDto>{
     public tg_intro_id: string;
    
     @ApiModelProperty()
-    @OneToMany(type => IntroEntity, intro => intro.id)
-    public tg_intro_intro_id: IntroEntity;
+    @Column()
+    @OneToMany(type => IntroEntity, intro => intro.intro_id)
+    public tg_intro_intro_id: string;
 
     @ApiModelProperty()
+    @Column()
     public tg_intro_last_clicked_id: string;
 
+    @Exclude()
     dtoClass = Tg_IntroDto;
 }

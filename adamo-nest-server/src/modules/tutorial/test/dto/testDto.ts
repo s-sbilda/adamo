@@ -15,12 +15,14 @@ export class TestDto extends AbstractDto {
     public test_solved_test_id: string;
 
     @ApiModelPropertyOptional()
-    public test_categorie: CategoryEntity;
+    public test_categorie: string;
 
     @ApiModelPropertyOptional()
     public test_tg_identifier: tg;
 
     constructor(test: TestEntity) {
+        console.log("IIIIIIIIITESTIIIIIIII");
+        console.log(test);
         super(test);
         this.test_id = test.test_id;
         this.test_solved_test_id = test.test_solved_test_id;

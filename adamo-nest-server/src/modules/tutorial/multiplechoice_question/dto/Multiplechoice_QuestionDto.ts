@@ -12,13 +12,14 @@ export class Multiplechoice_QuestionDto extends AbstractDto {
     public multiplechoice_question_text: string;
 
     @ApiModelPropertyOptional()
-    public multiplechoice_question_categories: CategoryEntity;
+    public multiplechoice_question_categories: string;
 
     constructor(mc_question: Multiplechoice_QuestionEntity) {
         super(mc_question);
         this.multiplechoice_question_id = mc_question.multiplechoice_question_id;
         this.multiplechoice_question_text = mc_question.multiplechoice_question_text;
         this.multiplechoice_question_categories = mc_question.multiplechoice_question_categories;
-
     }
+
+    
 }

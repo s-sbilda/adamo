@@ -5,23 +5,29 @@ import { AbstractEntity } from '../../../common/abstract.entity';
 import { type } from "os";
 import { ApiModelProperty } from "@nestjs/swagger";
 import { Modelling_RulesEntity } from "../modelling_rules/modelling_rules.entity";
+import { Modelling_Question_RulesEntity } from "../modelling_question_rules/modelling_question_rules.entity";
+import { Exclude } from "class-transformer";
 @Entity({name:'modelling_question'})
 export class Modelling_QuestionEntity extends AbstractEntity<Modelling_QuestionDto>{
 
     @PrimaryGeneratedColumn('uuid')
-    public id: string;
+    @OneToMany(type => Modelling_Question_RulesEntity, mod => mod.modelling_question_id)
+    public mod_qs_id: string;
 
     @ApiModelProperty()
     @Column()
-    public question_text: string;
+    public mod_qs_question_text: string;
 
     @ApiModelProperty()
-    @OneToMany(type => CategoryEntity, category => category.id)
-    public categories: CategoryEntity;
+    @Column()
+    @OneToMany(type => CategoryEntity, category => category.category_id)
+    public mod_qs_categories: string;
 
     @ApiModelProperty()
-    @OneToMany(type => Modelling_RulesEntity, modelling_rule => modelling_rule.id)
-    public custom_ruleset: Modelling_RulesEntity;
+    @Column()
+    @OneToMany(type => Modelling_RulesEntity, modelling_rule => modelling_rule.modelling_rule_id)
+    public mod_qs_custom_ruleset: string;
 
+    @Exclude()
     dtoClass = Modelling_QuestionDto;
 }

@@ -4,13 +4,12 @@ import { Multiplechoice_QuestionDto } from "./dto/Multiplechoice_QuestionDto";
 import { AbstractEntity } from '../../../common/abstract.entity';
 import { type } from "os";
 import { ApiModelProperty } from "@nestjs/swagger";
-import { Multiplechoice_Question_AnswerEntity } from "../multiplechoice_question_answer/multiplechoice_question_answer.entity";
+import { Exclude } from "class-transformer";
 
 @Entity({name:'multiplechoice_question'})
 export class Multiplechoice_QuestionEntity extends AbstractEntity<Multiplechoice_QuestionDto>{
 
     @PrimaryGeneratedColumn('uuid')
-    @OneToMany(type => Multiplechoice_Question_AnswerEntity, mult_qs_an => mult_qs_an.id)
     public multiplechoice_question_id: string;
 
     @ApiModelProperty()
@@ -18,9 +17,10 @@ export class Multiplechoice_QuestionEntity extends AbstractEntity<Multiplechoice
     public multiplechoice_question_text: string;
 
     @ApiModelProperty()
-    @OneToMany(type => CategoryEntity, category => category.id)
-    public multiplechoice_question_categories: CategoryEntity;
+    @Column()
+    @OneToMany(type => CategoryEntity, category => category.category_id)
+    public multiplechoice_question_categories: string;
 
-
+    @Exclude()
     dtoClass = Multiplechoice_QuestionDto;
 }
