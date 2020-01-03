@@ -10,8 +10,10 @@ export const TutorialRoutes = [{
     children: [
         { path: '', redirectTo: 'start', pathMatch: 'full' },
         { path: 'start', component: TutorialViewComponent },
-        { path: 'introduction/:catid', component: IntroductionComponent },
-        { path: 'testmc/:catid', component: TestMCComponent },
+
+        { path: 'intro/:catName', component: IntroductionComponent },
+
+        { path: 'multiplechoice/:catName/', component: TestMCComponent },
         { path: 'testmod/:taskid', component: TestModComponent },
         
     ]

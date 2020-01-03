@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { TutIntro } from '../../models/level.module'
+import { Introduction } from '../../modules/intro.module'
 import { LevelService } from '../../services/level.service'
 import { DialogFinishedComponent } from '../dlgFinished/dlgFinished.component';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
@@ -14,37 +14,64 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 
 export class IntroductionComponent implements OnInit {
 
-  currentpage; allpages: number
-  tutIntro: TutIntro
-  catid: number;
+  introArr: Introduction[]
+  catName: string
+  content: string
+  nextID: string
+  currentID: string
+  currentpage: number = 1
 
   constructor(
     private route: ActivatedRoute,
     private levelService: LevelService,
     private dlg: MatDialog) {
-
+      this.introArr = new Array
   }
 
   ngOnInit() {
-    this.tutIntro = new TutIntro()
 
-    this.route.params.subscribe(params => this.catid = params['catid'])
-    this.levelService.getIntro(this.catid).subscribe((intro) => {
-      this.tutIntro.deserialize(intro)
-      this.currentpage = 1
-      this.allpages = this.tutIntro.m_Introduction.length
+    this.route.params.subscribe(params => this.catName = params['catName'])
+    // console.log(this.catName)
+    this.levelService.getIntro(this.catName).subscribe((intro) => {
+      Object.assign(this.introArr, intro)
+      this.introArr.forEach(element => { 
+        if(element.intro_is_first)
+          this.content = element.intro_text
+          this.nextID = element.intro_next_id
+          this.currentID = element.intro_id
+      });
+      // console.log("CurrentID: " + this.currentID + " NextID: " + this.nextID)
+
     })
   }
 
+  upperCase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
   clickNext() {
-    if (this.currentpage < this.allpages) {
-      this.currentpage += 1;
-    } 
+    for (let index = 0; index < this.introArr.length; index++){
+      if(this.introArr[index].intro_id === this.nextID){
+        this.content = this.introArr[index].intro_text
+        this.nextID = this.introArr[index].intro_next_id
+        this.currentID = this.introArr[index].intro_id
+        this.currentpage++
+        // console.log("CurrentID: " + this.currentID + " NextID: " + this.nextID)
+        break
+      }
+    }
   }
 
   clickPrevious() {
-    if (this.currentpage > 1) {
-      this.currentpage -= 1;
+    for (let index = 0; index < this.introArr.length; index++){
+      if(this.introArr[index].intro_next_id === this.currentID){
+        this.content = this.introArr[index].intro_text
+        this.nextID = this.introArr[index].intro_next_id
+        this.currentID = this.introArr[index].intro_id
+        this.currentpage--
+        // console.log("CurrentID: " + this.currentID + " NextID: " + this.nextID)
+        break
+      }
     }
   }
 
@@ -57,7 +84,7 @@ export class IntroductionComponent implements OnInit {
 
     dialogConfig.data = {
       userid: this.getUserID(),
-      cat: this.catid,
+      cat: this.catName,
       type: 'intro'
     }
 

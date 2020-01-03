@@ -1,32 +1,26 @@
-<h1>Introduction</h1>
+<h1>Introduction to {{ upperCase(catName) }}</h1>
 
 <div class="container">
     <div class="text-center">
 
-        <div *ngFor="let lpd of tutIntro.m_Introduction">
-            <div *ngIf="lpd.m_Page === currentpage">
-                <p [innerHTML]="lpd.m_Content"></p>
-            </div>
+        <div>
+            {{ content }}
         </div>
+        <!-- <p [innerHTML]="content"></p> -->
 
     </div>
 
     <div class="btn-toolbar justify-content-between" role="toolbar">
         <button type="button" class="btn btn-secondary" (click)="clickPrevious()">Previous</button>
-        <button type="button" class="btn btn-secondary" id="btnNext" (click)="clickNext()">Next</button>
+        <button type="button" class="btn btn-secondary" (click)="clickNext()">Next</button>
     </div>
-    <div class="text-center">
-        {{ currentpage }}/{{ allpages }}
-    </div>
-    <!-- ?? Maybe here a little slider for user information how big the introduction is ?? -->
-
 </div>
 
 <hr>
 <div class="container">
     <div class="btn-toolbar justify-content-between" role="toolbar">
             <button type="button" class="btn btn-secondary">Abort Introduction</button>
-            <button *ngIf="currentpage === allpages" type="button" class="btn btn-secondary" (click)="openFinishDialog()">Safe and Return</button>
+            <button *ngIf="currentpage === introArr.length" type="button" class="btn btn-secondary" (click)="openFinishDialog()">Safe and Return</button>
     </div>
 </div>
 

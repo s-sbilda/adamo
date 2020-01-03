@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
-import { Tutorial, Categorie } from "../models/level.module";
+import { Tutorial } from "../modules/level.module";
 
 @Injectable()
 export class LevelService {
@@ -13,30 +13,39 @@ export class LevelService {
 
     /**
      * returns all relevant stuff for the start view,
+     * Relevant stuff:
+     *      - all modelling processes of each categorie
+     *      - introduction name
+     *      - multiple choice name
      * 
-     * @returns all modelling tasks for earch categorie
+     * @returns all modelling tasks for each categorie
      */
-    public getCompleteTutorial() {
-        // return this.httpService.get(this.BACKEND_URI + '/tutorial/startview', options)
-        return this.httpService.get("/assets/fixtures/overview.json")
+    public getStartview() {
+        return this.httpService.get(this.BACKEND_URI + '/categorie')
+        // return this.httpService.get("/assets/fixtures/overview.json")
     }
 
     /**
-     * get only one introduction of one categorie
-     * @param categorie 
-     * @returns pages and content of the choosen categorie
+     * Funktion Introduction related to every Categorie,
+     * so as param send the categorie name and get back an Array with all intro content
+     * of the related Categorie
+     * @param catName
+     * @returns 
      */
-    public getIntro(categorie: number) {
-        // POST to Nest with the Categorie Number
-        return this.httpService.get("/assets/fixtures/intro.json")
+    public getIntro(catName: string) {
+        return this.httpService.get(this.BACKEND_URI + '/intro/' + catName)
     }
 
     /**
-     * 
+     * get a multiple choice test group of one categorie
      * @param categorie 
+     * @returns five random questions out of a pool of questions
      */
-    public getMultipleChoiceTest(categorie: number) {
-        return this.httpService.get("/assets/fixtures/mctest.json")
+    public getMultipleChoiceTest(catName: string, userID) {
+        console.log(this.BACKEND_URI + '/randomByLeveL/' + catName + '/' + userID)
+        return this.httpService.get(this.BACKEND_URI + '/randomByLeveL/' + catName + '/' + userID)
+
+        // return this.httpService.get("/assets/fixtures/mctest.json")
     }
 
     /**

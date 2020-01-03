@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MultipleChoice } from '../../models/level.module';
+// import { MultipleChoice } from '../../modules/level.module';
 import { ActivatedRoute } from '@angular/router';
 import { LevelService } from '../../services/level.service';
 
@@ -10,9 +10,10 @@ import { LevelService } from '../../services/level.service';
 })
 export class TestMCComponent implements OnInit {
 
-  catid: number
+  catName: string
+  userid: string
   questionid: number
-  multipleChoiceTest: MultipleChoice
+  //multipleChoiceTest: MultipleChoice
   useranswers: Map<number, number[]>
 
   constructor(private route: ActivatedRoute, private levelService: LevelService) { 
@@ -21,23 +22,23 @@ export class TestMCComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.multipleChoiceTest = new MultipleChoice()
+    // this.multipleChoiceTest = new MultipleChoice()
 
-    this.route.params.subscribe(params => this.catid = params['catid'])
-    this.levelService.getMultipleChoiceTest(this.catid).subscribe(mc => {
+    this.route.params.subscribe(params => this.catName = params['catid'])
+    this.levelService.getMultipleChoiceTest(this.catName, this.userid).subscribe(mc => {
       // console.log(mc)
-      this.multipleChoiceTest.deserialize(mc)
+      // this.multipleChoiceTest.deserialize(mc)
     })
   }
 
   CheckCorrectness() {
-    if (this.questionid < this.multipleChoiceTest.m_MultipleChoice.length) {
+    // if (this.questionid < this.multipleChoiceTest.m_MultipleChoice.length) {
 
       this.questionid += 1;
 
-    } else {
+    // } else {
       // Test abgeben und request zum server, auf dem die Antowrten ausgewertet werden
-    }
+    // }
     console.log("currentQuestID: " + this.questionid);
   }
 

@@ -13,20 +13,20 @@
 
 <div class="container">
     <mat-accordion>
-        <div *ngFor="let cat of tutorial.m_Categorie">
+        <div *ngFor="let cat of tutorial">
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                    {{ cat.m_Name }} 
+                    {{ cat.catName }} 
                 </mat-expansion-panel-header>
 
                 <div class="submodule">
-                    <a [routerLink]="['/tutorial/introduction', cat.m_ID]">Introduction</a><input type="checkbox" class="float-right" disabled>
+                    <a [routerLink]="['/tutorial/intro', cat.catName]">Introduction</a><input type="checkbox" class="float-right" ngIf="" disabled>
                 </div>
                 <div class="submodule">
-                    <a [routerLink]="['/tutorial/testmc', cat.m_ID]">Test your knowlege</a><input type="checkbox" class="float-right" disabled>
+                    <a [routerLink]="['/tutorial/multiplechoice', cat.catName]">Test your knowlege</a><input type="checkbox" class="float-right" disabled>
                 </div>
 
-                <div *ngFor="let task of cat.m_ModellerTask">
+                <div *ngFor="let task of cat.catMod">
                     <div class="submodule">
                         <a [routerLink]="['/tutorial/testmod', task.m_TaskID]">{{ task.m_TaskName }}</a><input type="checkbox" ng-checked="task.m_TaskFinished == true" class="float-right" disabled>
                     </div>
